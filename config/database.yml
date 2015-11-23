@@ -10,16 +10,16 @@ development:
   database: database_development
   pool: 5
   username: Brandon
-  password: Brandon123.
+  password: 
   timeout: 5000
   
   
 production:
   adapter: postgresql
   encoding: unicode
-  database: database_development
+  database: database_production
   pool: 5
   username: Brandon
-  password: Brandon123.
+  password:
   timeout: 5000
   

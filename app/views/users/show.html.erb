@@ -20,15 +20,14 @@
         </p>
     </div>
     <div class="col-lg-3 col-xs-3">
-        <% if current_user.try(:admin?) %>
+
     	    <%= form_for @user do |f| %>
                 <h5>Admin User? <%= f.check_box :admin %></h5>
                 <h5>Active User? <%= f.check_box :active %></h5>
                 <%= f.submit(@user.new_record? ? "Register" : "Set Privileges", class: "btn btn-success") %>
 		    <% end %>
-        <% else %>
-        <% end %>
-        </div> 
+
+    </div> 
 </div>
 <%= render 'shared/page_title', title: "Receipts Entered By " + @user.firstname %> 
 <div class="table-container">
