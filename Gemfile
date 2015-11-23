@@ -35,11 +35,12 @@ gem  'strftime'
 
 
 
+group :production do
   gem 'pg'
   gem 'rails_12factor'
   gem 'thin'
-  gem 'webrick', '~> 1.3', '>= 1.3.1'
-
+  gem 'unicorn', '4.8.3'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -49,3 +50,8 @@ gem  'strftime'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development, :test do
+  gem 'sqlite3'
+  gem 'pry'
+  gem 'spring'
+end
