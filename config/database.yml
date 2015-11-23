@@ -5,13 +5,10 @@
 #   gem 'sqlite3'
 #
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: database_development
+  adapter: sqlite3
   pool: 5
-  username: Brandon
-  password: 
   timeout: 5000
+  database: db/development.sqlite3
   
   
 production:
