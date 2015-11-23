@@ -1,0 +1,6 @@
+
+<%- headers = ['Date', 'Subject Name','Vendor Name', 'Department Name', 'Purchaser Name', 'Purchase Method', 'Tax Amount', 'Purchase Amount', 'Description'] -%>
+<%= CSV.generate_line headers %>
+<%- @receipts.each do |receipt| -%>
+<%= CSV.generate_line([receipt.date, receipt.subject.subject_name, receipt.vendor.vendor_name, receipt.department.department_name, receipt.purchaser.purchaser_name, receipt.puroption.puroption_name, receipt.tax_amount, receipt.purchase_amount, receipt.descript]) -%>
+<%- end -%>

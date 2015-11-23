@@ -1,0 +1,6 @@
+<% if logged_in? and current_user.admin? %>
+		<%= link_to "", @image, method: :delete, data: { confirm: "Are you sure you want to delete this image?" }, class:"glyphicon glyphicon-remove cog1 right1" %>
+<h2 class="cog right2">Delete:</h2>
+<%end%>
+
+  <div class="img-original center"><%= image_tag @image.file.url(:original), alt: @image.file.url(:medium) %></div>

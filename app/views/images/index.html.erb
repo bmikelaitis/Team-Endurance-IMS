@@ -1,0 +1,12 @@
+
+
+<div class="index">
+  <%= render "index" %>
+</div>
+<%= form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
+  <div class="fallback">
+    <%= f.file_field :file %><br>
+    <%= f.submit "Upload a File" %>
+  </div>
+<% end %>
+

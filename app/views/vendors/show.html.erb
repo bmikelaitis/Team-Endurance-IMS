@@ -1,0 +1,60 @@
+<h1 class="title_size"> Vendor: <%= @vendor.vendor_name  %></h1>
+<hr>
+<h5 class="center">Vendor Description: <%= @vendor.description  %> </h5>       
+<h5 class="center">Vendor Created <%= time_ago_in_words(@vendor.created_at) %> ago</h5>
+<h5 class="center">Vendor Last Updated <%= time_ago_in_words(@vendor.updated_at) %> ago</h5>      
+
+
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Subject</th>
+				<th>Vendor</th>
+				<th>Department</th>
+				<th>Purchaser</th>
+				<th>Purchase Option</th>
+				<th>Tax Paid</th>
+				<th>Total Amount</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		
+        <% @receipts.each do |receipt| %>
+        <tbody>
+			<tr>
+				<td><%= receipt.date.try(:strftime, "%m/%d/%Y") %></td>
+				<td><%= receipt.subject.subject_name %></td>
+				<td><%= @vendor.vendor_name %></td>
+				<td><%= receipt.department.department_name %></td>
+				<td><%= receipt.purchaser.purchaser_name %></td>
+			    	<td><%= receipt.puroption.puroption_name %></td>
+				<td>$<%= receipt.tax_amount %></td>
+				<td>$<%= receipt.purchase_amount %></td>
+				
+                <td><%= link_to receipt_path(receipt) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_receipt_path(receipt) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+		</tbody>
+        <% end %>
+        <tr> 
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td bgcolor="#FFFF00">Total</td>
+        <td bgcolor="#FFFF00"> $<%= @vendor.receipts.sum(:tax_amount) %> </td>
+        <td bgcolor="#FFFF00"> $<%= @vendor.receipts.sum(:purchase_amount) %> </td>
+        <td></td>
+        </tr>
+        
+        </table>
+
+</div>

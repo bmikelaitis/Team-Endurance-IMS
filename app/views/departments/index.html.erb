@@ -1,0 +1,40 @@
+<%= render 'shared/page_title', title: "All Departments" %>
+<p><%= link_to new_department_path do %>
+    <i class="btn btn-lg btn-success floatright" >Add Department</i>
+    <% end %>
+</p>
+
+<div class="table-container col-lg-6 col-lg-offset-3 col-xs-12">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Department Name</th>
+				<th>Department Category</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<% @departments.each do |department| %>
+
+		<tbody>
+			<tr>
+				<td><%= department.department_name %></td>
+                <td><%= department.department_description %></td>
+                <td><%= link_to department_path(department) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>     
+                    <%= link_to edit_department_path(department) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i> </td>
+                    <% end %></td>
+			</tr>		
+		</tbody>
+		<% end %>
+	</table>
+	    
+
+      
+      <div class="row">
+                <div class= "col-lg-3 col-lg-offset-4 right">
+                <%= will_paginate %>
+                </div>
+       </div>
+</div>

@@ -1,0 +1,13 @@
+<%= render 'shared/errors', obj: @subject %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+		<%= form_for @subject do |f| %>
+		<h5 class="bold left line_Up">Subject:</h5>
+		<%= f.text_field :subject_name %>
+		<h5 class="bold left line_Up">Description:</h5>
+		<%= f.text_area :description %>
+	
+		<%= f.submit(@subject.new_record? ? "Create Subject" : "Edit Subject", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>

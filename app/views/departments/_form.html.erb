@@ -1,0 +1,13 @@
+<%= render 'shared/errors', obj: @department %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+		<%= form_for @department do |f| %>
+		<h5 class="bold left line_Up">department Name:</h5>
+		<%= f.text_field :department_name %>
+		<h5 class="bold left line_Up">Department Description:</h5>
+		<%= f.text_field :department_description %>
+	
+		<%= f.submit(@department.new_record? ? "Create Department" : "Edit Department", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>

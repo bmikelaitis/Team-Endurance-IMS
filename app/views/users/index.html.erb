@@ -1,0 +1,54 @@
+<%= render 'shared/page_title', title: "All Employees" %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Student / Employee ID</th>
+				<th>Job Title</th>
+				<th>Admin Status</th>
+				<th>Active Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<% @users.each do |user| %>
+
+		<tbody>
+			<tr>
+				<td><%= user.firstname %></td>
+				<td><%= user.lastname %></td>
+				<td><%= user.email %></td>
+				<td><%= user.seid %></td>
+				<td><%= user.title %></td>
+				<td><% if user.admin == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></td>
+				<td><% if user.active == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></td>
+                <td><%= link_to user_path(user) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_user_path(user) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+		</tbody>
+		<% end %>
+	</table>
+	    
+
+      
+      <div class="row">
+                <div class= " col-lg-offset-4 col-lg-8">
+                <%= will_paginate %>
+                </div>
+       </div>
+</div>

@@ -1,0 +1,44 @@
+<%= render 'shared/errors', obj: @receipt %>
+
+<div class="row">
+    <div class="well col-xs-6 col-lg-6 col-lg-offset-3 col-xs-offset-3 center">
+        <%= form_for @receipt do |f| %>
+
+		<h5 class="bold left line_Up">Purchase Date:</h5>
+        <%= f.text_field :date, :id => "datepicker", :value => Date.today %>
+		<h5 class="bold left line_Up">Purchaser:</h5>
+        <%= f.select :purchaser_id, options_from_collection_for_select(Purchaser.all, :id, :purchaser_name)%>
+        <h5 class="bold left line_Up">Department:</h5>
+        <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :department_name)%>
+        <h5 class="bold left line_Up">Subject:</h5>
+        <%= f.select :subject_id, options_from_collection_for_select(Subject.all, :id, :subject_name)%>
+        <h5 class="bold left line_Up">Purchase Method:</h5>
+        <%= f.select :puroption_id, options_from_collection_for_select(Puroption.all, :id, :puroption_name)%>
+        <h5 class="bold left line_Up">Vendor:</h5>
+        <%= f.select :vendor_id, options_from_collection_for_select(Vendor.all, :id, :vendor_name)%>    
+        <h5 class="bold left line_Up">Tax Amount:</h5>
+		<%= f.text_field :tax_amount, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
+		<h5 class="bold left line_Up">Total Purchase Amount:</h5>
+		<%= f.text_field :purchase_amount, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
+        <h5 class="bold left line_Up"> Additional Notes: </h5>
+        <%= f.text_area :descript, rows:4 %>
+		<%= f.submit(@receipt.new_record? ? "Submit Receipt" : "Edit Receipt", class: "btn btn-success") %>
+		<% end %>
+    </div>
+</div>
+
+
+<script type='text/javascript'>
+    
+    $('#receipt_file1').bind('change', function() {
+        size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 5) {
+            alert('Maximum file size is 5MB. Please choose a smaller file');
+        }    
+    });
+    
+</script>
+
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

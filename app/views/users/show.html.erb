@@ -1,0 +1,89 @@
+<%= render 'shared/page_title', title: "Employee Account: " + @user.firstname + " " + @user.lastname %> 
+<div class="right">
+    <%= link_to edit_user_path(@user) do %>
+    <i class="glyphicon glyphicon-cog cog"></i>
+    <% end %>
+</div>
+<div class="row">
+    <div class="col-lg-3 col-xs-3 col-lg-offset-2 col-xs-offset-2">
+        <%= gravatar_for @user, size: 150 %>  
+    </div>
+    <div class="col-lg-4 col-xs-4 ">
+        <p>
+            <h5>Job Title: <%= @user.title  %> </h5>            
+            <h5>Email Address: <%= @user.email  %></h5>
+            <h5>Student / Employee ID: <%= @user.seid  %> </h5>
+            <h5>Admin Status: <%= @user.admin %></h5>
+            <h5>Active Status: <%= @user.active %> </h5>
+            <h5>Profile Access Since: <%= time_ago_in_words(@user.created_at) %> ago</h5>
+            <h5>Last Profile Update: <%= time_ago_in_words(@user.updated_at) %> ago</h5>
+        </p>
+    </div>
+    <div class="col-lg-3 col-xs-3">
+        <% if current_user.try(:admin?) %>
+    	    <%= form_for @user do |f| %>
+                <h5>Admin User? <%= f.check_box :admin %></h5>
+                <h5>Active User? <%= f.check_box :active %></h5>
+                <%= f.submit(@user.new_record? ? "Register" : "Set Privileges", class: "btn btn-success") %>
+		    <% end %>
+        <% else %>
+        <% end %>
+        </div> 
+</div>
+<%= render 'shared/page_title', title: "Receipts Entered By " + @user.firstname %> 
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Subject</th>
+				<th>Vendor</th>
+				<th>Department</th>
+				<th>Purchaser</th>
+				<th>Purchase Option</th>
+				<th>Tax Paid</th>
+				<th>Total Amount</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		
+        <% @receipts.each do |receipt| %>
+        <tbody>
+			<tr>
+				<td><%= receipt.date.try(:strftime, "%m/%d/%Y") %></td>
+				<td><%= receipt.subject.subject_name %></td>
+				<td><%= receipt.vendor.vendor_name %></td>
+				<td><%= receipt.department.department_name %></td>
+				<td><%= receipt.purchaser.purchaser_name %></td>
+			    	<td><%= receipt.puroption.puroption_name %></td>
+				<td>$<%= receipt.tax_amount %></td>
+				<td>$<%= receipt.purchase_amount %></td>
+				
+                <td><%= link_to receipt_path(receipt) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_receipt_path(receipt) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+		</tbody>
+        <% end %>
+        <tr> 
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td bgcolor="#FFFF00">Total</td>
+        <td bgcolor="#FFFF00"> $<%= @receipts.sum(:tax_amount) %> </td>
+        <td bgcolor="#FFFF00"> $<%= @receipts.sum(:purchase_amount) %> </td>
+        <td></td>
+        </tr>
+        
+        </table>
+	<div class="row">
+                <div class= " col-lg-offset-4 col-lg-8">
+                </div>
+        </div>
+</div>
+

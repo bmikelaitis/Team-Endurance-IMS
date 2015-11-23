@@ -1,0 +1,40 @@
+<%= render 'shared/page_title', title: "All Purchasers" %>
+<p><%= link_to new_purchaser_path do %>
+    <i class="btn btn-lg btn-success floatright" >Add Purchaser</i>
+    <% end %>
+</p>
+
+<div class="table-container col-lg-6 col-lg-offset-3 col-xs-12">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Purchaser Name</th>
+				<th>Worker Category</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<% @purchasers.each do |purchaser| %>
+
+		<tbody>
+			<tr>
+				<td><%= purchaser.purchaser_name %></td>
+                <td><%= purchaser.worker_category %></td>
+                <td><%= link_to purchaser_path(purchaser) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>     
+                    <%= link_to edit_purchaser_path(purchaser) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i> </td>
+                    <% end %></td>
+			</tr>		
+		</tbody>
+		<% end %>
+	</table>
+	    
+
+      
+      <div class="row">
+                <div class= "col-lg-3 col-lg-offset-4 right">
+                <%= will_paginate %>
+                </div>
+       </div>
+</div>

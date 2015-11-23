@@ -1,0 +1,40 @@
+<%= render 'shared/page_title', title: "All Subjects" %>
+<p><%= link_to new_subject_path do %>
+    <i class="btn btn-lg btn-success floatright" >Add Subject</i>
+    <% end %>
+</p>
+
+<div class="table-container col-lg-6 col-lg-offset-3 col-xs-12">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Subject</th>
+				<th>Description</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<% @subjects.each do |subject| %>
+
+		<tbody>
+			<tr>
+				<td><%= subject.subject_name %></td>
+				<td><%= subject.description %></td>
+                <td><%= link_to subject_path(subject) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>     
+                    <%= link_to edit_subject_path(subject) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i> </td>
+                    <% end %></td>
+			</tr>		
+		</tbody>
+		<% end %>
+	</table>
+	    
+
+      
+      <div class="row">
+                <div class= "col-lg-3 col-lg-offset-4 right">
+                <%= will_paginate %>
+                </div>
+       </div>
+</div>

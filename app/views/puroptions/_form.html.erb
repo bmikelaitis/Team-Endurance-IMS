@@ -1,0 +1,13 @@
+<%= render 'shared/errors', obj: @puroption %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+		<%= form_for @puroption do |f| %>
+		<h5 class="bold left line_Up">Purchase Option:</h5>
+		<%= f.text_field :puroption_name %>
+		<h5 class="bold left line_Up">Description:</h5>
+		<%= f.text_area :description %>
+	
+		<%= f.submit(@puroption.new_record? ? "Create Purchase Option" : "Edit Purchase Option", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>

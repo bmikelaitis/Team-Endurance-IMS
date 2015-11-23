@@ -1,0 +1,13 @@
+<%= render 'shared/errors', obj: @vendor %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+		<%= form_for @vendor do |f| %>
+		<h5 class="bold left line_Up">Subject:</h5>
+		<%= f.text_field :vendor_name %>
+		<h5 class="bold left line_Up">Description:</h5>
+		<%= f.text_area :description %>
+	
+		<%= f.submit(@vendor.new_record? ? "Create Vendor" : "Edit Vendor", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>

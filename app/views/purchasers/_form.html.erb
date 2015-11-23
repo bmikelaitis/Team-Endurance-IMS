@@ -1,0 +1,13 @@
+<%= render 'shared/errors', obj: @purchaser %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+		<%= form_for @purchaser do |f| %>
+		<h5 class="bold left line_Up">Purchaser Name:</h5>
+		<%= f.text_field :purchaser_name %>
+		<h5 class="bold left line_Up">Job Title:</h5>
+		<%= f.text_field :worker_category %>
+	
+		<%= f.submit(@purchaser.new_record? ? "Create Purchaser" : "Edit Purchaser", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>
