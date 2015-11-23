@@ -38,7 +38,7 @@ gem  'strftime'
   gem 'pg'
   gem 'rails_12factor'
   gem 'thin'
-  gem 'unicorn', '4.8.3'
+  gem 'webrick', '~> 1.3', '>= 1.3.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
