@@ -32,6 +32,8 @@ gem 'bcrypt', '3.1.7'
 gem 'paperclip', '~> 4.2.0'
 gem 'dropzonejs-rails', '~> 0.4.16'
 gem  'strftime'
+gem 'aws-sdk'
+
 
 
 
