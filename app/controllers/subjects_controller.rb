@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
 	before_action :require_admin_user, only: [:index, :edit, :update, :show]
 
 	def index
-		@subjects = Subject.paginate(page: params[:page], per_page: 3)
+		@subjects = Subject.paginate(page: params[:page], per_page: 10)
 	end
 	
 	def show

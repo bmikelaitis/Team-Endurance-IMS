@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
 	before_action :require_admin_user, only: [:index, :edit, :update, :show]
 
 	def index
-		@vendors = Vendor.paginate(page: params[:page], per_page: 3)
+		@vendors = Vendor.paginate(page: params[:page], per_page: 10)
 	end
 	
 	def show

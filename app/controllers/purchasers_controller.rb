@@ -4,7 +4,7 @@ class PurchasersController < ApplicationController
 	before_action :require_admin_user, only: [:index, :edit, :update, :show]
 
 	def index
-		@purchasers = Purchaser.paginate(page: params[:page], per_page: 3)
+		@purchasers = Purchaser.paginate(page: params[:page], per_page: 10)
 	end
 	
 	def show
