@@ -11,6 +11,8 @@ class Receipt < ActiveRecord::Base
     validates :descript, presence: true, length: { minimum: 4, maximum: 120 }
     before_save :tax_amount
     before_save :purchase_amount
+    validates :tax_amount, presence:true
+    validates :purchase_amount, presence:true
     
     
     def tax_amount=(num)

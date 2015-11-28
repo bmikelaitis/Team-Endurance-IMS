@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+en:
+  activerecord:
+    attributes:
+      receipt:
+        descript: "Additional Notes:"
+      puroption:
+        puroption_name: "Purchase Option"
+      user:
+        firstname: "First Name"
+        lastname: "Last Name"
+        seid: "Student ID or Employee #"
+        title: "Job Title"
